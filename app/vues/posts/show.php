@@ -2,31 +2,48 @@
 /*
  ./app/vues/posts/show.php
  Variables disponibles
-   $post= ARRAY(id, title, content, created_at, updated_at)
+   $posts= ARRAY(ARRAY(id, title, text, created_at, quote, category_id ))
 */
-?>
-<div class="single-post">
-  <div class="feature-img">
-     <img class="img-fluid" src="assets/img/blog/<?php echo $post['image']; ?>" alt="">
-  </div>
-  <div class="blog_details">
-     <h2><?php echo $post['title']; ?></h2>
-     <ul class="blog-info-link mt-3 mb-4">
-        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-     </ul>
-     <p class="excert"><?php echo $post['content']; ?></p>
-  </div>
-</div>
 
-<div class="blog-author">
-  <div class="media align-items-center">
-     <img src="assets/img/blog/author.png" alt="">
-     <div class="media-body">
-        <a href="#">
-           <h4>Harvard milan</h4>
-        </a>
-        <p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he
-           our dominion twon Second divided from</p>
-     </div>
+?>
+  <div class="row">
+
+        <div class="sub-title">
+          <a href="index.html" title="Go to Home Page"><h2>Back Home</h2></a>
+            <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
+         </div>
+
+        <div class="col-md-12 content-page">
+          <div class="col-md-12 blog-post">
+
+            <!-- Post Headline Start -->
+            <div class="post-title">
+                <h1><?php echo $post['title']; ?></h1>
+            </div>
+            <!-- Post Headline End -->
+
+            <!-- Post Detail Start -->
+            <div class="post-info">
+                <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"F d, Y");?></span> | <span>Life style</span>
+               </div>
+               <!-- Post Detail End -->
+                <p><?php echo $post['text']; ?></p>
+
+                 <!-- Post Blockquote (Italic Style) Start -->
+                 <blockquote class="margin-top-40 margin-bottom-40">
+                   <p><?php echo $post['quote']; ?></p>
+                  </blockquote>
+                  <!-- Post Blockquote (Italic Style) End -->
+
+                  <!-- Post Buttons -->
+                  <div>
+                    <a href="form.html" type="button" class="btn btn-primary">Edit Post</a>
+                    <a href="#" type="button" class="btn btn-secondary" role="button">Delete Post</a>
+                  </div>
+                  <!-- Post Buttons End -->
+
+
+            </div>
+         </div>
+
   </div>
-</div>

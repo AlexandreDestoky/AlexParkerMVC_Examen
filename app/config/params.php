@@ -5,7 +5,7 @@
 */
 
 // ZONES DYNAMIQUES
-  $content="essai zone dynamique";
+  $content="";
   $title="";
 
 // PARAMETRES DE CONNEXION
