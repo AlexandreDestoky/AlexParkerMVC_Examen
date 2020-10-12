@@ -36,6 +36,27 @@ $title = $post['title'];
 ob_start();
   include '../app/vues/posts/show.php';
 $content = ob_get_clean();
+}
 
 
+// Affiche le formulaire d'ajout d'un post
+function addFormAction(\PDO $connexion) {
+  include_once '../app/modeles/categoriesModele.php';
+  $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+
+  GLOBAL $content;
+  ob_start();
+    include '../app/vues/posts/addForm.php';
+  $content = ob_get_clean();
+}
+
+//ajoute un post suite au formulaire
+function addAction(\PDO $connexion) {
+
+
+  //je demande au modèle d'ajouter le poste
+  include_once '../app/modeles/postsModele.php';
+  $id = \App\Modeles\PostsModele\insert($connexion);
+  //je redirige vers la liste des posts
+  header('location:'. BASE_URL);
 }

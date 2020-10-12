@@ -10,8 +10,7 @@ function findAll(\PDO $connexion) :array {
           FROM categories c
           LEFT JOIN posts p ON c.id= p.category_id
           GROUP BY c.id
-          ORDER BY nbrPost DESC
-          LIMIT 3;";
+          ORDER BY nbrPost DESC;";
   $rs = $connexion -> query($sql);
   return $rs-> fetchAll(\PDO::FETCH_ASSOC);
 }

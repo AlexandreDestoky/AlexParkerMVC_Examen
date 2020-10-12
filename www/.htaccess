@@ -12,10 +12,21 @@ RewriteEngine on
 # ROUTES
 #--------------------------------------------------
 
-  # DETAILS D'UN POST
+  # ROUTE DU DETAIL D'UN POST
   # PATTERN: posts/{id}/{slug}
   # VERS: index.php?postID=x
   RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postID=$1 [L]
+
+  # ROUTE D'AJOUT D'UN POST: affichage du formulaire
+  # PATTERN: posts/add/form
+  # VERS: index.php?posts=addForm
+  RewriteRule ^posts\/add\/form$ index.php?posts=addForm [L]
+
+  # ROUTE D'AJOUT D'UN POST: INSERT
+  # PATTERN: posts/add/insert
+  # VERS: index.php?posts=add
+  RewriteRule ^posts\/add\/insert$ index.php?posts=add [L]
+
 
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]

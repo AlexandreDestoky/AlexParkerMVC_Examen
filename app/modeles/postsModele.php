@@ -34,3 +34,20 @@ function findOneById(\PDO $connexion,int $id) :array {
   $rs->execute();
   return $rs->fetch(\PDO::FETCH_ASSOC);
 }
+
+
+function insert(\PDO $connexion) {
+  $sql = "INSERT INTO posts
+          SET title = :title,
+              text = :text,
+              quote = :quote,
+              category_id = :category_id,
+              created_at = NOW();";
+  $rs = $connexion->prepare($sql);
+  $rs->bindValue(':title', $_POST['title'], \PDO::PARAM_STR );
+  $rs->bindValue(':text', $_POST['text'], \PDO::PARAM_STR );
+  $rs->bindValue(':quote', $_POST['quote'], \PDO::PARAM_STR );
+  $rs->bindValue(':category_id', $_POST['category_id'], \PDO::PARAM_INT );
+  $rs->execute();
+  return $connexion -> lastInsertId();
+}
