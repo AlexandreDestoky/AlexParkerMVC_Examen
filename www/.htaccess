@@ -12,10 +12,10 @@ RewriteEngine on
 # ROUTES
 #--------------------------------------------------
 
-  # ROUTE DU DETAIL D'UN POST
-  # PATTERN: posts/{id}/{slug}
-  # VERS: index.php?postID=x
-  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postID=$1 [L]
+  # DETAIL D'UN POST
+  # PATTERN: posts/{id}/{slug}.html
+  # URL: index.php?postID=x
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*).html$ index.php?postID=$1 [L]
 
   # ROUTE D'AJOUT D'UN POST: affichage du formulaire
   # PATTERN: posts/add/form

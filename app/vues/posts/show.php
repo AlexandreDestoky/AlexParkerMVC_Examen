@@ -24,7 +24,7 @@
 
             <!-- Post Detail Start -->
             <div class="post-info">
-                <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"F d, Y");?></span> | <span>Life style</span>
+                <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"F d, Y");?></span> | <span><?php echo $categorie['name']; ?></span>
                </div>
                <!-- Post Detail End -->
                 <p><?php echo $post['text']; ?></p>

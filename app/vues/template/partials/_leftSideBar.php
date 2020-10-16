@@ -18,7 +18,7 @@
         </nav>
         <?php
         include_once '../app/modeles/categoriesModele.php';
-        $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+        $categories = \App\Modeles\CategoriesModele\findPostOfCategory($connexion);
         include '../app/vues/categories/index.php';
         ?>
      </div>

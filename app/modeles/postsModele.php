@@ -10,12 +10,17 @@ namespace App\Modeles\PostsModele;
  */
 // FindAll
 function findAll(\PDO $connexion) :array {
-  $sql = "SELECT *
-          FROM posts
-          ORDER BY created_at DESC
+  $sql = "SELECT *,
+            p.id as postId,
+            c.id as categorieId,
+            c.name as categorieName,
+            p.created_at as postDate
+          FROM posts p
+          JOIN categories c on p.category_id = c.id
+          ORDER BY p.created_at DESC
           LIMIT 10;";
-  $rs = $connexion -> query($sql);
-  return $rs-> fetchAll(\PDO::FETCH_ASSOC);
+  $rs = $connexion->query($sql);
+  return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
 
 /**

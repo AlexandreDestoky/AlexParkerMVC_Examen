@@ -15,6 +15,9 @@ function IndexAction(\PDO $connexion){
   include_once '../app/modeles/postsModele.php';
   $posts = PostsModele\findAll($connexion);
 
+  // include_once '../app/modeles/categoriesModele.php';
+  // $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+
   /*On charge la vue posts/index dans $content*/
   GLOBAL $content,$title;
   $title = "BLOG";
@@ -29,6 +32,9 @@ function showAction(\PDO $connexion, int $id) {
   // je met dans $post les infos du post que je demande au modèle
 include_once '../app/modeles/postsModele.php';
 $post = PostsModele\findOneById($connexion, $id);
+
+include_once '../app/modeles/categoriesModele.php';
+$categorie = \App\Modeles\CategoriesModele\findOneById($connexion,$id);
 
 // je charge la vue show dans $content
 GLOBAL $content,$title;
@@ -52,7 +58,6 @@ function addFormAction(\PDO $connexion) {
 
 //ajoute un post suite au formulaire
 function addAction(\PDO $connexion) {
-
 
   //je demande au modèle d'ajouter le poste
   include_once '../app/modeles/postsModele.php';

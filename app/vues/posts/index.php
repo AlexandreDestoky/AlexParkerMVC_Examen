@@ -20,15 +20,16 @@
 
             <!-- Blog Post Start -->
             <div class="col-md-12 blog-post">
-              <?php foreach ($posts as $post): ?>
+              <?php foreach ($posts as $post):?>
                 <div class="post-title">
-                  <a href="posts/<?php echo $post['id']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']); ?>"><h1><?php echo $post['title'] ?></h1></a>
+                   <a href="posts/<?php echo $post['postId']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']); ?>.html"><h1><?php echo $post['title']; ?></h1></a>
                 </div>
                 <div class="post-info">
-                  <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"Y-m-d"); ?></span> | <span>Life style</span>
+                   <span> <?php echo Noyau\Fonctions\datify($post['postDate'],'Y-m-d'); ?> </span> | <span><?php echo $post['categorieName']; ?></span>
                 </div>
-                <p><?php echo \Noyau\Fonctions\tronquer($post['text'],150); ?></p>
-                <a href="posts/<?php echo $post['id']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']); ?>" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></a>
+                <p><?php echo \Noyau\Fonctions\tronquer($post['text'], 150); ?>
+                </p>
+                <a href="posts/<?php echo $post['postId']; ?>/<?php echo \Noyau\Fonctions\slugify($post['title']); ?>.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></a>
               <?php endforeach; ?>
             </div>
             <!-- Blog Post End -->
