@@ -63,5 +63,21 @@ function delete(\PDO $connexion, int $id) {
           WHERE id = :id;";
   $rs = $connexion->prepare($sql);
   $rs->bindValue(':id', $id, \PDO::PARAM_INT );
-  return intval($rs->execute()); 
+  return intval($rs->execute());
+}
+
+function update(\PDO $connexion, int $id) {
+  $sql = "UPDATE posts
+          SET title = :title,
+              text = :text,
+              quote = :quote,
+              category_id = :category_id
+         WHERE id = :id";
+  $rs = $connexion->prepare($sql);
+  $rs->bindValue(':title', $_POST['title'], \PDO::PARAM_STR );
+  $rs->bindValue(':text', $_POST['text'], \PDO::PARAM_STR );
+  $rs->bindValue(':quote', $_POST['quote'], \PDO::PARAM_STR );
+  $rs->bindValue(':category_id', $_POST['category_id'], \PDO::PARAM_INT );
+  $rs->bindValue(':id', $id, \PDO::PARAM_INT );
+  return intval($rs->execute());
 }

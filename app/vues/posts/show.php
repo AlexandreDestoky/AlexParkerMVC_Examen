@@ -37,7 +37,7 @@
 
                   <!-- Post Buttons -->
                   <div>
-                    <a href="form.html" type="button" class="btn btn-primary">Edit Post</a>
+                    <a href="posts/edit/form/<?php echo $post['id']; ?>" type="button" class="btn btn-primary edit">Edit Post</a>
                     <a href="posts/delete/<?php echo $post['id']; ?>" type="button" class="btn btn-secondary delete" role="button">Delete Post</a>
                   </div>
                   <!-- Post Buttons End -->

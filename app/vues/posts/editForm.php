@@ -19,30 +19,29 @@
 
           <!-- Post Headline Start -->
           <div class="post-title">
-            <h1>Post Form</h1>
+            <h1>Edit Form</h1>
           </div>
              <!-- Post Headline End -->
 
         <!-- Form Start -->
-          <form action="posts/add/insert" method="post">
+          <form action="posts/edit/<?php echo $post['id']; ?>" method="post">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" name="title" id="title" class="form-control" placeholder="Enter your title here" />
+              <input type="text" name="title" id="title" class="form-control" value="<?php echo $post['title']; ?>" />
             </div>
             <div class="form-group">
               <label for="text">Text</label>
-              <textarea id="text" name="text" class="form-control" rows="5" placeholder="Enter your text here"></textarea>
+              <textarea id="text" name="text" class="form-control" rows="5"><?php echo $post['text']; ?></textarea>
             </div>
             <div class="form-group">
               <label for="quote">Quote</label>
-              <textarea id="quote" name="quote" class="form-control" rows="5" placeholder="Enter your quote here"></textarea>
+              <textarea id="quote" name="quote" class="form-control" rows="5"><?php echo $post['quote']; ?></textarea>
             </div>
             <div class="form-group">
               <label for="category">Category</label>
               <select id="category" name="category_id" class="form-control">
-                <option disabled selected>Select your category</option>
                 <?php foreach ($categories as $category): ?>
-                  <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                  <option value="<?php echo $category['id'];?>"<?php if($category['id'] == $post['category_id']) {echo "selected=selected";}?>><?php echo $category['name']; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>

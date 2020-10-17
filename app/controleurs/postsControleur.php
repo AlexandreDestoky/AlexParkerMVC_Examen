@@ -35,7 +35,6 @@ $categorie = \App\Modeles\CategoriesModele\findOneById($connexion,$id);
 
 // je charge la vue show dans $content
 GLOBAL $content,$title;
-$title = $post['title'];
 ob_start();
   include '../app/vues/posts/show.php';
 $content = ob_get_clean();
@@ -68,5 +67,31 @@ function deleteAction(\PDO $connexion, int $id) {
   include_once '../app/modeles/postsModele.php';
   $return = \App\Modeles\postsModele\delete($connexion, $id);
   //je redirige vers la liste des posts
-  header('location:'. BASE_URL); 
+  header('location:'. BASE_URL);
+}
+
+
+//Affiche le formulaire de modification de catégorie
+function editFormAction(\PDO $connexion, int $id) {
+ //je demande au modèle de trouver l'élément
+ include_once '../app/modeles/postsModele.php';
+ $post = \App\Modeles\postsModele\findOneById($connexion, $id);
+
+ include_once '../app/modeles/categoriesModele.php';
+ $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+
+ //je charge la vue editForm dans $content1
+ GLOBAL $content;
+ ob_start();
+   include '../app/vues/posts/editForm.php';
+ $content = ob_get_clean();
+}
+
+//Modifie une catégorie
+function editAction(\PDO $connexion, int $id) {
+ //je demande au modèle d'updater' la catégorie
+ include_once '../app/modeles/postsModele.php';
+ $return = \App\Modeles\postsModele\update($connexion, $id);
+ //je redirige vers la liste des catégories
+ header('location:'. BASE_URL);
 }

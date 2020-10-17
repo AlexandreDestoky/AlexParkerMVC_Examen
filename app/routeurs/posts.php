@@ -7,14 +7,14 @@ include '../app/controleurs/postsControleur.php';
 
 
   switch ($_GET['posts']):
-    // DETAILS D'UN POST
-    // PATTERN : ?posts=show&id=x
-    // CTRL : postsControleur
-    // ACTION : show
-    case 'show':
-    include_once '../app/controleurs/postsControleur.php';
-    \App\Controleurs\PostsControleur\showAction($connexion, $_GET['id'] );
-    break;
+  // DETAILS D'UN POST
+  // PATTERN : ?posts=show&id=x
+  // CTRL : postsControleur
+  // ACTION : show
+  case 'show':
+  include_once '../app/controleurs/postsControleur.php';
+  \App\Controleurs\PostsControleur\showAction($connexion, $_GET['id'] );
+  break;
   // AJOUT D'UN POST : FORMULAIRE
   // PATTERN: index.php?posts=addForm
   // CTRL: postsControleur
@@ -39,5 +39,19 @@ include '../app/controleurs/postsControleur.php';
       include_once '../app/controleurs/postsControleur.php';
       \App\Controleurs\PostsControleur\deleteAction($connexion, $_GET['id'] );
   break;
+  // MODIFICATION D'UN post : FORMULAIRE
+  // PATTERN: index.php?posts=editForm&id=x
+  // CTRL: postsControleur
+  // ACTION: editForm
+  case 'editForm':
+    \App\Controleurs\postsControleur\editFormAction($connexion, $_GET['id']);
+    break;
+  // MODIFICATION D'UN post : UPDATE
+  // PATTERN: index.php?posts=edit&id=x
+  // CTRL: postsControleur
+  // ACTION: edit
+  case 'edit':
+    \App\Controleurs\postsControleur\editAction($connexion, $_GET['id']);
+    break;
 
 endswitch;
