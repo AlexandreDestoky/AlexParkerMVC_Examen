@@ -19,7 +19,7 @@
 <base href="<?php echo BASE_URL; ?>" target="_top">
 
 
-<title>DevBlog - Personal Blog Template</title>
+<title>Alex Parker - <?php echo $title; ?></title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon/favicon.ico">

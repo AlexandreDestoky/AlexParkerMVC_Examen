@@ -1,14 +1,15 @@
 <?php
 /*
   ../app/modeles/postsModele.php
+  MODELE DES POSTS
 */
 namespace App\Modeles\PostsModele;
+
 /**
- * [findAll description]
+ * [findAll: Renvoi la liste des 10 derniers posts]
  * @param  PDO   $connexion [description]
  * @return array            [description]
  */
-// FindAll
 function findAll(\PDO $connexion) :array {
   $sql = "SELECT *,
             p.id as postId,
@@ -24,12 +25,11 @@ function findAll(\PDO $connexion) :array {
 }
 
 /**
- * [findOneById description]
+ * [findOneById: Renvoi le post correspondant à l'id donné]
  * @param  PDO   $connexion [description]
  * @param  int   $id        [description]
  * @return array            [description]
  */
-// findOneById
 function findOneById(\PDO $connexion,int $id) :array {
   $sql = "SELECT *
           FROM posts
@@ -40,7 +40,11 @@ function findOneById(\PDO $connexion,int $id) :array {
   return $rs->fetch(\PDO::FETCH_ASSOC);
 }
 
-
+/**
+ * [insert : insert les éléments mit dans le formulaire sous forme d'un post]
+ * @param  PDO    $connexion [description]
+ * @return [type]            [description]
+ */
 function insert(\PDO $connexion) {
   $sql = "INSERT INTO posts
           SET title = :title,
@@ -56,7 +60,12 @@ function insert(\PDO $connexion) {
   $rs->execute();
   return $connexion -> lastInsertId();
 }
-
+/**
+ * [delete: supprime le post avec l'id donné]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function delete(\PDO $connexion, int $id) {
   $sql = "DELETE
           FROM posts
@@ -66,13 +75,19 @@ function delete(\PDO $connexion, int $id) {
   return intval($rs->execute());
 }
 
+/**
+ * [update: met a jour les infos du post avec l'id donné]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function update(\PDO $connexion, int $id) {
   $sql = "UPDATE posts
           SET title = :title,
               text = :text,
               quote = :quote,
               category_id = :category_id
-         WHERE id = :id";
+          WHERE id = :id";
   $rs = $connexion->prepare($sql);
   $rs->bindValue(':title', $_POST['title'], \PDO::PARAM_STR );
   $rs->bindValue(':text', $_POST['text'], \PDO::PARAM_STR );

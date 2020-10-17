@@ -24,23 +24,23 @@
              <!-- Post Headline End -->
 
         <!-- Form Start -->
-          <form action="posts/add/insert" method="post">
+          <form action="posts/add/insert.html" method="post">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" name="title" id="title" class="form-control" placeholder="Enter your title here" />
+              <input type="text" name="title" id="title" class="form-control" placeholder="Enter your title here" required/>
             </div>
             <div class="form-group">
               <label for="text">Text</label>
-              <textarea id="text" name="text" class="form-control" rows="5" placeholder="Enter your text here"></textarea>
+              <textarea id="text" name="text" class="form-control" rows="5" placeholder="Enter your text here" required></textarea>
             </div>
             <div class="form-group">
               <label for="quote">Quote</label>
-              <textarea id="quote" name="quote" class="form-control" rows="5" placeholder="Enter your quote here"></textarea>
+              <textarea id="quote" name="quote" class="form-control" rows="5" placeholder="Enter your quote here" required></textarea>
             </div>
             <div class="form-group">
               <label for="category">Category</label>
-              <select id="category" name="category_id" class="form-control">
-                <option disabled selected>Select your category</option>
+              <select id="category" name="category_id" class="form-control" required>
+                <option disabled selected value="">Select your category</option>
                 <?php foreach ($categories as $category): ?>
                   <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
                 <?php endforeach; ?>

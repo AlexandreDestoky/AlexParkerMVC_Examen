@@ -1,97 +1,107 @@
 <?php
 /*
-  ../app/controleurs/postsControleur
+  ../app/controleurs/postsControleur.php
+  CONTROLEUR DES POSTS
 */
 
 namespace App\Controleurs\PostsControleur;
-use \App\Modeles\PostsModele;
-/**
- * [IndexAction description]
- * @param PDO $connexion [description]
- */
-// INDEX ACTION
-function IndexAction(\PDO $connexion){
-  //Je met dans $posts  la liste des 10 derniers postsque je demande au modèles */
+use App\Modeles\PostsModele;
+
+function indexAction(\PDO $connexion){
+  //Je met dans $posts la liste des 10 derniers posts que je demande au modèle
   include_once '../app/modeles/postsModele.php';
   $posts = PostsModele\findAll($connexion);
 
-  /*On charge la vue posts/index dans $content*/
+  //Je charge la vue index dans $content
   GLOBAL $content,$title;
-  $title = "BLOG";
+  $title = TITRE_POSTS_LIST;
   ob_start();
     include '../app/vues/posts/index.php';
   $content = ob_get_clean();
 }
 
 
-// SHOW ACTION
+
 function showAction(\PDO $connexion, int $id) {
-  // je met dans $post les infos du post que je demande au modèle
-include_once '../app/modeles/postsModele.php';
-$post = PostsModele\findOneById($connexion, $id);
+  // Je met dans $post les infos du post avec l'id donné que je demande au modèle des posts
+  include_once '../app/modeles/postsModele.php';
+  $post = PostsModele\findOneById($connexion, $id);
 
-include_once '../app/modeles/categoriesModele.php';
-$categorie = \App\Modeles\CategoriesModele\findOneById($connexion,$id);
+  //Je met dans $categorie les infos de la catégorie lié au post avec l'id donné que je demande au modèle des catégories
+  include_once '../app/modeles/categoriesModele.php';
+  $categorie = \App\Modeles\CategoriesModele\findOneById($connexion,$id);
 
-// je charge la vue show dans $content
-GLOBAL $content,$title;
-ob_start();
-  include '../app/vues/posts/show.php';
-$content = ob_get_clean();
+  // je charge la vue show dans $content
+  GLOBAL $content,$title;
+  $title = $post['title'];
+  ob_start();
+    include '../app/vues/posts/show.php';
+  $content = ob_get_clean();
 }
 
 
-// Affiche le formulaire d'ajout d'un post
+
 function addFormAction(\PDO $connexion) {
+  // Je met dans $categories la liste des catégories que je demande au modèle des catégories
   include_once '../app/modeles/categoriesModele.php';
   $categories = \App\Modeles\CategoriesModele\findAll($connexion);
 
-  GLOBAL $content;
+  // je charge la vue addForm dans $content
+  GLOBAL $content,$title;
+  $title = TITRE_POSTS_ADDFORM;
   ob_start();
     include '../app/vues/posts/addForm.php';
   $content = ob_get_clean();
 }
 
-//ajoute un post suite au formulaire
-function addAction(\PDO $connexion) {
 
+
+function addAction(\PDO $connexion) {
   //je demande au modèle d'ajouter le poste
   include_once '../app/modeles/postsModele.php';
   $id = \App\Modeles\PostsModele\insert($connexion);
-  //je redirige vers la liste des posts
-  header('location:'. BASE_URL);
-}
 
-function deleteAction(\PDO $connexion, int $id) {
-  //je demande au modèle de supprimer la post
-  include_once '../app/modeles/postsModele.php';
-  $return = \App\Modeles\postsModele\delete($connexion, $id);
   //je redirige vers la liste des posts
   header('location:'. BASE_URL);
 }
 
 
-//Affiche le formulaire de modification de catégorie
+
 function editFormAction(\PDO $connexion, int $id) {
- //je demande au modèle de trouver l'élément
- include_once '../app/modeles/postsModele.php';
- $post = \App\Modeles\postsModele\findOneById($connexion, $id);
+  // Je met dans $post les infos du post avec l'id donné que je demande au modèle des posts
+  include_once '../app/modeles/postsModele.php';
+  $post = \App\Modeles\postsModele\findOneById($connexion, $id);
 
- include_once '../app/modeles/categoriesModele.php';
- $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+  // Je met dans $categories la liste des catégories que je demande au modèle des catégories
+  include_once '../app/modeles/categoriesModele.php';
+  $categories = \App\Modeles\CategoriesModele\findAll($connexion);
 
- //je charge la vue editForm dans $content1
- GLOBAL $content;
- ob_start();
-   include '../app/vues/posts/editForm.php';
- $content = ob_get_clean();
+  //je charge la vue editForm dans $content
+  GLOBAL $content,$title;
+  $title = TITRE_POSTS_EDITFORM;
+  ob_start();
+    include '../app/vues/posts/editForm.php';
+  $content = ob_get_clean();
 }
 
-//Modifie une catégorie
+
+
 function editAction(\PDO $connexion, int $id) {
- //je demande au modèle d'updater' la catégorie
+ //je demande au modèle d'updater le post
  include_once '../app/modeles/postsModele.php';
  $return = \App\Modeles\postsModele\update($connexion, $id);
- //je redirige vers la liste des catégories
- header('location:'. BASE_URL);
+
+ //je redirige vers le détail du post qui vient d'être modifier
+ header('location:'. BASE_URL . 'posts/'. $id . '/' .\Noyau\Fonctions\slugify($_POST['title']) . '.html');
+}
+
+
+
+function deleteAction(\PDO $connexion, int $id) {
+  //je demande au modèle de supprimer le post
+  include_once '../app/modeles/postsModele.php';
+  $return = \App\Modeles\postsModele\delete($connexion, $id);
+
+  //je redirige vers la liste des posts
+  header('location:'. BASE_URL);
 }

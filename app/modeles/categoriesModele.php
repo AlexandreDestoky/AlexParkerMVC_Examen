@@ -1,10 +1,16 @@
 <?php
 /*
   ../app/modeles/CategoriesModele.php
+  MODELE DES CATEGORIES
 */
 namespace App\Modeles\CategoriesModele;
 
-
+/**
+ * [findPostOfCategory:Renvoi la liste des catégories trié par nom et compte le nombre de post pour chaque catégorie ]
+ * fonction utilisé pour le _leftSideBar.php
+ * @param  PDO   $connexion [description]
+ * @return array            [description]
+ */
 function findPostOfCategory(\PDO $connexion) :array {
   $sql = "SELECT *, COUNT(p.id) AS nbrPost
           FROM categories c
@@ -15,6 +21,12 @@ function findPostOfCategory(\PDO $connexion) :array {
   return $rs-> fetchAll(\PDO::FETCH_ASSOC);
 }
 
+
+/**
+ * [findAll: Revoie les infos des catégories trié par nom]
+ * @param  PDO   $connexion [description]
+ * @return array            [description]
+ */
 function findAll(\PDO $connexion) :array {
   $sql = "SELECT *
           FROM categories c
@@ -23,6 +35,13 @@ function findAll(\PDO $connexion) :array {
   return $rs-> fetchAll(\PDO::FETCH_ASSOC);
 }
 
+
+/**
+ * [findOneById: Renvoie les infos de la catégorie où l'id est égale a celle du post]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function findOneById(\PDO $connexion, int $id) {
   $sql = "SELECT *
           FROM categories c

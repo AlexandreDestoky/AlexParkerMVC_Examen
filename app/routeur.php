@@ -6,7 +6,7 @@
 
 // ROUTE DES POSTS
 // PATTERN: index?posts=x
-// ROUTEUR: postsRouteur
+// ROUTEUR: posts
 if (isset($_GET['posts'])):
    include_once '../app/routeurs/posts.php';
 
@@ -17,5 +17,5 @@ if (isset($_GET['posts'])):
 // ACTION : index
   else:
     include_once '../app/controleurs/postsControleur.php';
-    \App\Controleurs\PostsControleur\IndexAction($connexion);
+    \App\Controleurs\PostsControleur\indexAction($connexion);
   endif;

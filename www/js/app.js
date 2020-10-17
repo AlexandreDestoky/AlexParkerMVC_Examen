@@ -1,4 +1,7 @@
-
+/*
+  .www/js/app.js
+  FICHIER DE SURCHARGE AFIN DE VALIDER SI L'UTILISATEUR DÉSIRE VRAIMENT MODIFIER/SUPPRIMER UN POST
+ */
 $(function(){
 
   $('.delete').click(function(){

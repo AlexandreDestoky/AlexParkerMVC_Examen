@@ -18,32 +18,31 @@
 
             <!-- Post Headline Start -->
             <div class="post-title">
-                <h1><?php echo $post['title']; ?></h1>
+              <h1><?php echo $post['title']; ?></h1>
             </div>
             <!-- Post Headline End -->
 
             <!-- Post Detail Start -->
             <div class="post-info">
-                <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"F d, Y");?></span> | <span><?php echo $categorie['name']; ?></span>
-               </div>
-               <!-- Post Detail End -->
-                <p><?php echo $post['text']; ?></p>
-
-                 <!-- Post Blockquote (Italic Style) Start -->
-                 <blockquote class="margin-top-40 margin-bottom-40">
-                   <p><?php echo $post['quote']; ?></p>
-                  </blockquote>
-                  <!-- Post Blockquote (Italic Style) End -->
-
-                  <!-- Post Buttons -->
-                  <div>
-                    <a href="posts/edit/form/<?php echo $post['id']; ?>" type="button" class="btn btn-primary edit">Edit Post</a>
-                    <a href="posts/delete/<?php echo $post['id']; ?>" type="button" class="btn btn-secondary delete" role="button">Delete Post</a>
-                  </div>
-                  <!-- Post Buttons End -->
-
-
+              <span><?php echo \Noyau\Fonctions\datify($post['created_at'],"F d, Y");?></span> | <span><?php echo $categorie['name']; ?></span>
             </div>
-         </div>
+            <!-- Post Detail End -->
+            <p><?php echo $post['text']; ?></p>
+
+            <!-- Post Blockquote (Italic Style) Start -->
+            <blockquote class="margin-top-40 margin-bottom-40">
+              <p><?php echo $post['quote']; ?></p>
+            </blockquote>
+            <!-- Post Blockquote (Italic Style) End -->
+
+            <!-- Post Buttons -->
+            <div>
+              <a href="posts/<?php echo $post['id'];?>/<?php echo \Noyau\Fonctions\slugify($post['title']);?>/edit/form.html" type="button" class="btn btn-primary edit">Edit Post</a>
+              <a href="posts/<?php echo $post['id'];?>/<?php echo \Noyau\Fonctions\slugify($post['title']);?>/delete.html" type="button" class="btn btn-secondary delete" role="button">Delete Post</a>
+            </div>
+            <!-- Post Buttons End -->
+
+          </div>
+        </div>
 
   </div>
