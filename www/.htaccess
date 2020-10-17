@@ -15,7 +15,7 @@ RewriteEngine on
   # DETAIL D'UN POST
   # PATTERN: posts/{id}/{slug}.html
   # URL: index.php?postID=x
-  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*).html$ index.php?postID=$1 [L]
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*).html$ index.php?posts=show&id=$1 [L]
 
   # ROUTE D'AJOUT D'UN POST: affichage du formulaire
   # PATTERN: posts/add/form
@@ -26,6 +26,11 @@ RewriteEngine on
   # PATTERN: posts/add/insert
   # VERS: index.php?posts=add
   RewriteRule ^posts\/add\/insert$ index.php?posts=add [L]
+
+  # SUPPRESSION D'UN POST
+  # PATTERN: posts/delete/x
+  # VERS: index.php?posts=delete&id=x
+  RewriteRule ^posts\/delete\/([1-9][0-9]*)$ index.php?posts=delete&id=$1 [L]
 
 
 # --------------------------------------------------

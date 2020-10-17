@@ -15,9 +15,6 @@ function IndexAction(\PDO $connexion){
   include_once '../app/modeles/postsModele.php';
   $posts = PostsModele\findAll($connexion);
 
-  // include_once '../app/modeles/categoriesModele.php';
-  // $categories = \App\Modeles\CategoriesModele\findAll($connexion);
-
   /*On charge la vue posts/index dans $content*/
   GLOBAL $content,$title;
   $title = "BLOG";
@@ -64,4 +61,12 @@ function addAction(\PDO $connexion) {
   $id = \App\Modeles\PostsModele\insert($connexion);
   //je redirige vers la liste des posts
   header('location:'. BASE_URL);
+}
+
+function deleteAction(\PDO $connexion, int $id) {
+  //je demande au modèle de supprimer la post
+  include_once '../app/modeles/postsModele.php';
+  $return = \App\Modeles\postsModele\delete($connexion, $id);
+  //je redirige vers la liste des posts
+  header('location:'. BASE_URL); 
 }

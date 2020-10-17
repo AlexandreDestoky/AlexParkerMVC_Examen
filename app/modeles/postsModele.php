@@ -56,3 +56,12 @@ function insert(\PDO $connexion) {
   $rs->execute();
   return $connexion -> lastInsertId();
 }
+
+function delete(\PDO $connexion, int $id) {
+  $sql = "DELETE
+          FROM posts
+          WHERE id = :id;";
+  $rs = $connexion->prepare($sql);
+  $rs->bindValue(':id', $id, \PDO::PARAM_INT );
+  return intval($rs->execute()); 
+}
