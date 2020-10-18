@@ -3,6 +3,7 @@
   ../app/vues/controleurs/index.php
   Variables disponibles:
    $tags :ARRAY(ARRAY(id,name,created_at))
+   VUE APPELlÉ DANS LE _leftSideBar.php (affichage des catégories et nbr de posts pour chaque catégorie : question Bonus) 
 */
 ?>
 

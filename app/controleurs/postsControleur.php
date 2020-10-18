@@ -7,6 +7,11 @@
 namespace App\Controleurs\PostsControleur;
 use App\Modeles\PostsModele;
 
+/**
+ * [indexAction description]
+ * @param  PDO    $connexion [description]
+ * @return [type]            [description]
+ */
 function indexAction(\PDO $connexion){
   //Je met dans $posts la liste des 10 derniers posts que je demande au modèle
   include_once '../app/modeles/postsModele.php';
@@ -21,7 +26,12 @@ function indexAction(\PDO $connexion){
 }
 
 
-
+/**
+ * [showAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function showAction(\PDO $connexion, int $id) {
   // Je met dans $post les infos du post avec l'id donné que je demande au modèle des posts
   include_once '../app/modeles/postsModele.php';
@@ -40,7 +50,10 @@ function showAction(\PDO $connexion, int $id) {
 }
 
 
-
+/**
+ * [addFormAction description]
+ * @param PDO $connexion [description]
+ */
 function addFormAction(\PDO $connexion) {
   // Je met dans $categories la liste des catégories que je demande au modèle des catégories
   include_once '../app/modeles/categoriesModele.php';
@@ -55,7 +68,10 @@ function addFormAction(\PDO $connexion) {
 }
 
 
-
+/**
+ * [addAction description]
+ * @param PDO $connexion [description]
+ */
 function addAction(\PDO $connexion) {
   //je demande au modèle d'ajouter le poste
   include_once '../app/modeles/postsModele.php';
@@ -66,7 +82,12 @@ function addAction(\PDO $connexion) {
 }
 
 
-
+/**
+ * [editFormAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function editFormAction(\PDO $connexion, int $id) {
   // Je met dans $post les infos du post avec l'id donné que je demande au modèle des posts
   include_once '../app/modeles/postsModele.php';
@@ -85,7 +106,12 @@ function editFormAction(\PDO $connexion, int $id) {
 }
 
 
-
+/**
+ * [editAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function editAction(\PDO $connexion, int $id) {
  //je demande au modèle d'updater le post
  include_once '../app/modeles/postsModele.php';
@@ -96,7 +122,12 @@ function editAction(\PDO $connexion, int $id) {
 }
 
 
-
+/**
+ * [deleteAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function deleteAction(\PDO $connexion, int $id) {
   //je demande au modèle de supprimer le post
   include_once '../app/modeles/postsModele.php';

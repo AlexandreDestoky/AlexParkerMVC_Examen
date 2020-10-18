@@ -37,7 +37,7 @@ function findAll(\PDO $connexion) :array {
 
 
 /**
- * [findOneById: Renvoie les infos de la catégorie où l'id est égale a celle du post]
+ * [findOneById: Renvoie les infos de la catégorie où l'id donné est égale a celle du post]
  * @param  PDO    $connexion [description]
  * @param  int    $id        [description]
  * @return [type]            [description]

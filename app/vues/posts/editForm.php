@@ -1,12 +1,11 @@
 <?php
 /*
  ./app/vues/posts/addForm.php
+ FORMULAIRE D'UPDATE D'UN POST
 
 */
 
 ?>
-
-
 
 <div class="row">
       <div class="sub-title">

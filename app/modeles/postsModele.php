@@ -24,6 +24,8 @@ function findAll(\PDO $connexion) :array {
   return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
 
+
+
 /**
  * [findOneById: Renvoi le post correspondant à l'id donné]
  * @param  PDO   $connexion [description]
@@ -39,6 +41,8 @@ function findOneById(\PDO $connexion,int $id) :array {
   $rs->execute();
   return $rs->fetch(\PDO::FETCH_ASSOC);
 }
+
+
 
 /**
  * [insert : insert les éléments mit dans le formulaire sous forme d'un post]
@@ -60,20 +64,8 @@ function insert(\PDO $connexion) {
   $rs->execute();
   return $connexion -> lastInsertId();
 }
-/**
- * [delete: supprime le post avec l'id donné]
- * @param  PDO    $connexion [description]
- * @param  int    $id        [description]
- * @return [type]            [description]
- */
-function delete(\PDO $connexion, int $id) {
-  $sql = "DELETE
-          FROM posts
-          WHERE id = :id;";
-  $rs = $connexion->prepare($sql);
-  $rs->bindValue(':id', $id, \PDO::PARAM_INT );
-  return intval($rs->execute());
-}
+
+
 
 /**
  * [update: met a jour les infos du post avec l'id donné]
@@ -93,6 +85,23 @@ function update(\PDO $connexion, int $id) {
   $rs->bindValue(':text', $_POST['text'], \PDO::PARAM_STR );
   $rs->bindValue(':quote', $_POST['quote'], \PDO::PARAM_STR );
   $rs->bindValue(':category_id', $_POST['category_id'], \PDO::PARAM_INT );
+  $rs->bindValue(':id', $id, \PDO::PARAM_INT );
+  return intval($rs->execute());
+}
+
+
+
+/**
+* [delete: supprime le post avec l'id donné]
+* @param  PDO    $connexion [description]
+* @param  int    $id        [description]
+* @return [type]            [description]
+*/
+function delete(\PDO $connexion, int $id) {
+  $sql = "DELETE
+  FROM posts
+  WHERE id = :id;";
+  $rs = $connexion->prepare($sql);
   $rs->bindValue(':id', $id, \PDO::PARAM_INT );
   return intval($rs->execute());
 }

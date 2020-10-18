@@ -15,6 +15,6 @@
   define('USERPWD','');
 
 // TITRES
-  define ('TITRE_POSTS_LIST', "Blog");
+  define('TITRE_POSTS_LIST', "Blog");
   define('TITRE_POSTS_ADDFORM', "Add a post");
   define('TITRE_POSTS_EDITFORM', "Edit a post");

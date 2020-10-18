@@ -3,6 +3,7 @@
  ./app/vues/posts/index.php
  Variables disponibles
    $posts= ARRAY(ARRAY(id, title, text, created_at, quote, category_id ))
+   $categorie = ARRAY(id, name , created_at)
 */
 
 ?>

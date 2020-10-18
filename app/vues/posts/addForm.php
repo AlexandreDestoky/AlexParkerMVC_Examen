@@ -1,6 +1,7 @@
 <?php
 /*
  ./app/vues/posts/addForm.php
+ FORMULAIRE D'AJOUT D'UN POST
 
 */
 
